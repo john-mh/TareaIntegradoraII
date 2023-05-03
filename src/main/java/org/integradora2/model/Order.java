@@ -5,10 +5,4 @@ import org.jetbrains.annotations.NotNull;
 import java.time.LocalDate;
 import java.util.List;
 
-public record Order(List<? extends Searchable<?>> products, LocalDate date, String name, double totalPrice) implements Searchable<Order>, Comparable<Order> {
-
-    @Override
-    public int compareTo(@NotNull Order o) {
-        return 0;
-    }
-}
+public record Order(List<? extends Searchable<?>> products, LocalDate date, String name, double totalPrice) implements Searchable<Order> {}
