@@ -2,7 +2,7 @@ package org.integradora2.model;
 
 import org.jetbrains.annotations.NotNull;
 
-public class Product implements Searchable<Product>, Comparable<Product>{
+public class Product implements Searchable<Product>{
     private ProductType type;
     private final String name;
     private String description;
@@ -10,9 +10,12 @@ public class Product implements Searchable<Product>, Comparable<Product>{
     private int timesBought;
     private int availableQuantity;
 
-    public Product(String name, double price, int type) {
+    public Product(String name, String description, double price, int timesBought, int availableQuantity, int type) {
         this.name = name;
+        this.description = description;
         this.price = price;
+        this.timesBought = timesBought;
+        this.availableQuantity = availableQuantity;
         setCategory(type);
     }
 
@@ -67,10 +70,5 @@ public class Product implements Searchable<Product>, Comparable<Product>{
             case 8 -> this.type = ProductType.STATIONERY;
 
         }
-    }
-
-    @Override
-    public int compareTo(@NotNull Product o) {
-        return 0;
     }
 }
