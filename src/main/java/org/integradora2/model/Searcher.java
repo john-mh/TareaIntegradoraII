@@ -11,52 +11,36 @@ import java.util.Comparator;
 @FunctionalInterface
 public interface Searcher<T extends Searchable<T>> {
 
-    @NotNull
-    <U, V extends Iterable<V>> V search(@NotNull List<T> searchable, U query, Function<T, U> fieldGetter);
+    <U, V extends Iterable<T>, R extends List<T>> R search(@NotNull V searchable, U query, Function<T, U> fieldGetter);
 
     static <T extends Searchable<T>> List<T> searchingInt(@NotNull List<T> list, Integer value, Function<T, Integer> fieldGetter) {
         list.sort(Comparator.comparing(fieldGetter));
         List<Integer> indexes = binarySearch(list, value, fieldGetter, Comparator.comparingInt(Integer::intValue));
-        if(indexes.isEmpty())
-            return null;
-        else
-            return collectMatches(list, indexes);
+        return collectMatches(list, indexes);
     }
 
     static <T extends Searchable<T>> List<T> searchingDouble(@NotNull List<T> list, double value, Function<T, Double> fieldGetter) {
         list.sort(Comparator.comparing(fieldGetter));
         List<Integer> indexes = binarySearch(list, value, fieldGetter, Comparator.comparingDouble(Double::doubleValue));
-        if(indexes.isEmpty())
-            return null;
-        else
-            return collectMatches(list, indexes);
+        return collectMatches(list, indexes);
     }
 
     static <T extends Searchable<T>> List<T> searchingString(@NotNull List<T> list, String query, Function<T, String> fieldGetter) {
         list.sort(Comparator.comparing(fieldGetter));
         List<Integer> indexes = binarySearch(list, query, fieldGetter, String::compareToIgnoreCase);
-        if(indexes.isEmpty())
-            return null;
-        else
-            return collectMatches(list, indexes);
+        return collectMatches(list, indexes);
     }
 
     static <T extends Searchable<T>> List<T> searchingDate(@NotNull List<T> list, LocalDate value, Function<T, LocalDate> fieldGetter) {
         list.sort(Comparator.comparing(fieldGetter));
         List<Integer> indexes = binarySearch(list, value, fieldGetter, Comparator.naturalOrder());
-        if(indexes.isEmpty())
-            return null;
-        else
-            return collectMatches(list, indexes);
+        return collectMatches(list, indexes);
     }
 
     static <T extends Searchable<T>> List<T> searchingByRange(@NotNull List<T> list, double lowerBound, double upperBound, Function<T, Double> fieldGetter) {
         list.sort(Comparator.comparing(fieldGetter));
         List<Integer> indexes = binarySearchInRange(list, fieldGetter, lowerBound, upperBound);
-        if(indexes.isEmpty())
-            return null;
-        else
-            return collectMatches(list, indexes);
+        return collectMatches(list, indexes);
     }
 
     static <T, U> List<Integer> binarySearch(List<T> list, U target, Function<T, U> keyExtractor, Comparator<? super U> comparator) {
@@ -113,12 +97,15 @@ public interface Searcher<T extends Searchable<T>> {
         return result;
     }
 
-
     static <T> List<T> collectMatches(List<T> list, List<Integer> indexes){
-        List<T> matches = new ArrayList<>();
-        for (Integer index : indexes) {
-            matches.add(list.get(index));
+        if(indexes.isEmpty())
+            return null;
+        else {
+            List<T> matches = new ArrayList<>();
+            for (Integer index : indexes) {
+                matches.add(list.get(index));
+            }
+            return matches;
         }
-        return matches;
     }
 }
