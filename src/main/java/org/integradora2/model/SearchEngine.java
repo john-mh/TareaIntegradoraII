@@ -6,23 +6,27 @@ import java.util.function.Function;
 
 public class SearchEngine {
 
-    public <T extends Searchable<T>> List<T> searchingString(List<T> items, String query, Function<T, String> fieldGetter) {
-        return Searcher.searchingString(items, query, fieldGetter);
+    public <T extends Searchable<T>> List<T> searchingString(List<T> searchable, String query, Function<T, String> fieldGetter) {
+        return Searcher.searchingString(searchable, query, fieldGetter);
     }
 
-    public <T extends Searchable<T>> List<T> searchingInt(List<T> items, int value, Function<T, Integer> fieldGetter) {
-        return Searcher.searchingInt(items, value, fieldGetter);
+    public <T extends Searchable<T>> List<T> searchingInt(List<T> searchable, int value, Function<T, Integer> fieldGetter) {
+        return Searcher.searchingInt(searchable, value, fieldGetter);
     }
 
-    public <T extends Searchable<T>> List<T> searchingDouble(List<T> items, double value, Function<T, Double> fieldGetter) {
-        return Searcher.searchingDouble(items, value, fieldGetter);
+    public <T extends Searchable<T>> List<T> searchingDouble(List<T> searchable, double value, Function<T, Double> fieldGetter) {
+        return Searcher.searchingDouble(searchable, value, fieldGetter);
     }
 
-    public <T extends Searchable<T>> List<T> searchingDate(List<T> orders, LocalDate value, Function<T, LocalDate> fieldGetter) {
-        return Searcher.searchingDate(orders, value, fieldGetter);
+    public <T extends Searchable<T>> List<T> searchingDate(List<T> searchable, LocalDate value, Function<T, LocalDate> fieldGetter) {
+        return Searcher.searchingDate(searchable, value, fieldGetter);
     }
 
-    public <T extends Searchable<T>> List<T> collectMatches(List<T> list, List<Integer> indexes) {
-        return Searcher.collectMatches(list, indexes);
+    public <T extends Searchable<T>> List<T> searchingByRange(List<T> searchable, double lowerBound, double upperBound, Function<T, Double> fieldGetter) {
+        return Searcher.searchingByRange(searchable, lowerBound, upperBound, fieldGetter);
+    }
+
+    public <T extends Searchable<T>> List<T> collectMatches(List<T> searchable, List<Integer> indexes) {
+        return Searcher.collectMatches(searchable, indexes);
     }
 }
