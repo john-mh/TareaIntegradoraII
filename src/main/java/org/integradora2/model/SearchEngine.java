@@ -21,4 +21,8 @@ public class SearchEngine {
     public <T extends Searchable<T>> List<T> searchingDate(List<T> orders, LocalDate value, Function<T, LocalDate> fieldGetter) {
         return Searcher.searchingDate(orders, value, fieldGetter);
     }
+
+    public <T extends Searchable<T>> List<T> collectMatches(List<T> list, List<Integer> indexes) {
+        return Searcher.collectMatches(list, indexes);
+    }
 }
