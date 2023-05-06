@@ -7,20 +7,56 @@ import java.util.List;
 public class MercadoLibre {
     private final List<Product> products;
     private final List<Order> orders;
-    private final SearchEngine searchEngine;
 
     public MercadoLibre() {
         products = new LinkedList<>();
         orders = new LinkedList<>();
-        searchEngine = new SearchEngine();
     }
 
     public List<Product> getProducts() {
         return products;
     }
 
-    public List<Order> getOrders() {
-        return orders;
+    public String getCategory(int index){
+        return Product.getCategoryByIndex(index);
+    }
+
+    public String displayProducts(){
+        StringBuilder sb = displayProducts(new StringBuilder());
+        return sb.toString();
+    }
+
+    private StringBuilder displayProducts(StringBuilder sb){
+        String format = "%-5s | %-30s | %-20s | %-10s | %-15s | %-5s | %-10s\n";
+        String header = String.format(format, "ID", "Name", "Description", "Price", "Type", "Qty", "Times Bought");
+        int index = 0;
+        sb.append(header);
+        for (Product p : products) {
+            sb.append(String.format("%-10d%-15s%-30s%-30s$%-10.2f%-10d%-10d\n", index, p.getName(), p.getDescription(), p.getCategory(), p.getPrice(), p.getTimesBought(), p.getAvailableQuantity()));
+            index++;
+        }
+        return sb;
+    }
+
+    public String displayOrders(){
+        StringBuilder sb = displayOrders(new StringBuilder());
+        return sb.toString();
+    }
+
+    private StringBuilder displayOrders(StringBuilder sb){
+        int index = 0;
+        for(Order order : orders){
+            sb.append("Order ID: ").append(index).append("\n")
+                    .append("Order by: ").append(order.name()).append("\n")
+                    .append("Date: ").append(order.date()).append("\n")
+                    .append(String.format("%-15s%-30s%-15s\n", "Product Type", "Product Name", "Price"));
+            for (Product p : products) {
+                sb.append(String.format("%-15s%-30s$%-15.2f\n", p.getCategory(), p.getName(), p.getPrice()));
+            }
+            sb.append(String.format("%-45s$%.2f\n", "Total Price:", order.totalPrice()));
+            index++;
+        }
+        return sb;
     }
 
     public void addProduct(String name, String description, double price, int timesBought, int availableQuantity, int type) {
@@ -32,7 +68,7 @@ public class MercadoLibre {
             increaseTimesBought(i, 1);
             decreaseProductQuantity(i, 1);
         }
-        orders.add(new Order(searchEngine.collectMatches(products, productsIndexes), date, name, totalPrice));
+        orders.add(new Order(Searcher.collectMatches(products, productsIndexes), date, name, totalPrice));
     }
 
     public void deleteProduct(int index) {
@@ -56,35 +92,34 @@ public class MercadoLibre {
     }
 
     public List<Product> searchProductByName(String query) {
-        return searchEngine.searchingString(products, query, Product::getName);
+        return Searcher.searchingString(products, query, Product::getName);
     }
 
     public List<Product> searchProductByCategory(String query) {
-        return searchEngine.searchingString(products, query, Product::getCategory);
+        return Searcher.searchingString(products, query, Product::getCategory);
     }
 
     public List<Product> searchProductByPrice(double query) {
-        return searchEngine.searchingDouble(products, query, Product::getPrice);
+        return Searcher.searchingDouble(products, query, Product::getPrice);
     }
 
     public List<Product> searchProductByTimesBought(int query) {
-        return searchEngine.searchingInt(products, query, Product::getTimesBought);
+        return Searcher.searchingInt(products, query, Product::getTimesBought);
     }
 
     public List<Product> searchProductByRangePrice(double min, double max) {
-        return searchEngine.searchingByRange(products, min, max, Product::getPrice);
+        return Searcher.searchingByRange(products, min, max, Product::getPrice);
     }
 
     public List<Order> searchOrderByName(String query) {
-        return searchEngine.searchingString(orders, query, Order::name);
+        return Searcher.searchingString(orders, query, Order::name);
     }
 
     public List<Order> searchOrderByTotalPrice(double query) {
-        return searchEngine.searchingDouble(orders, query, Order::totalPrice);
+        return Searcher.searchingDouble(orders, query, Order::totalPrice);
     }
 
     public List<Order> searchOrderByDate(LocalDate query) {
-        return searchEngine.searchingDate(orders, query, Order::date);
+        return Searcher.searchingDate(orders, query, Order::date);
     }
-
 }
