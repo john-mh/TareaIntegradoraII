@@ -19,6 +19,10 @@ public class Product implements Searchable<Product>{
         setCategory(type);
     }
 
+    public static String getCategoryByIndex(int index) {
+        return ProductType.values()[index].getCategory();
+    }
+
     public String getName() {
         return name;
     }
@@ -26,6 +30,7 @@ public class Product implements Searchable<Product>{
     public String getCategory() {
         return type.getCategory();
     }
+
     public String getDescription() {
         return description;
     }
@@ -68,7 +73,6 @@ public class Product implements Searchable<Product>{
             case 6 -> this.type = ProductType.TOYS_AND_GAMES;
             case 7 -> this.type = ProductType.BEAUTY_AND_PERSONAL_CARE;
             case 8 -> this.type = ProductType.STATIONERY;
-
         }
     }
 }
