@@ -4,12 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="71fa9b08-ad21-497b-89d0-b9cc947bf7cc" name="Changes" comment="Initial commit">
+    <list default="true" id="71fa9b08-ad21-497b-89d0-b9cc947bf7cc" name="Changes" comment="Added getters for the orders list and product price. Added setters for the product and order lists. Added the displayers for the sorted lists. Added exceptions for the search methods. New search method added.">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/integradora2/model/FileManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/SearchUnitTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/integradora2/model/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/integradora2/model/Order.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/integradora2/model/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/integradora2/model/Product.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/integradora2/model/MercadoLibre.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/integradora2/model/MercadoLibre.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/integradora2/model/ProductType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/integradora2/model/ProductType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/integradora2/model/Searcher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/integradora2/model/Searcher.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/integradora2/ui/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/integradora2/ui/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,13 +23,31 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
-        <option value="Class" />
         <option value="Enum" />
+        <option value="Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="search-Feature" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="48c113fb-c8e5-4b61-b02e-9b7a8a2b16e2" />
+        <option name="url" value="https://github.com/john-mh/TareaIntegradoraII.git" />
+      </UrlAndAccount>
+    </option>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -46,10 +67,15 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Downloaded.Files.Path.Enabled": "false",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
+    "extract.method.default.visibility": "private",
     "last_opened_file_path": "C:/Users/mauuu/IdeaProjects/TareaIntegradora_II",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -58,9 +84,71 @@
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RunManager" selected="JUnit.SearchUnitTest.searchProductByPriceRangeTest1">
+    <configuration name="AddDeleteUnitTest.addProductTest6" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="TareaIntegradora_II" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="AddDeleteUnitTest" />
+      <option name="METHOD_NAME" value="addProductTest6" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AddDeleteUnitTest.addProductTest7" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="TareaIntegradora_II" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="AddDeleteUnitTest" />
+      <option name="METHOD_NAME" value="addProductTest7" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SearchUnitTest.searchProductByName_ContainsTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="TareaIntegradora_II" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="SearchUnitTest" />
+      <option name="METHOD_NAME" value="searchProductByName_ContainsTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SearchUnitTest.searchProductByName_ContainsTest3" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="TareaIntegradora_II" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="SearchUnitTest" />
+      <option name="METHOD_NAME" value="searchProductByName_ContainsTest3" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SearchUnitTest.searchProductByPriceRangeTest1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="TareaIntegradora_II" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="SearchUnitTest" />
+      <option name="METHOD_NAME" value="searchProductByPriceRangeTest1" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.SearchUnitTest.searchProductByPriceRangeTest1" />
+        <item itemvalue="JUnit.AddDeleteUnitTest.addProductTest7" />
+        <item itemvalue="JUnit.AddDeleteUnitTest.addProductTest6" />
+        <item itemvalue="JUnit.SearchUnitTest.searchProductByName_ContainsTest3" />
+        <item itemvalue="JUnit.SearchUnitTest.searchProductByName_ContainsTest" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -72,7 +160,17 @@
       <workItem from="1682889851395" duration="4623000" />
       <workItem from="1683004150455" duration="77000" />
       <workItem from="1683067078057" duration="1338000" />
-      <workItem from="1683081067013" duration="997000" />
+      <workItem from="1683081067013" duration="2769000" />
+      <workItem from="1683083888512" duration="6297000" />
+      <workItem from="1683133252725" duration="981000" />
+      <workItem from="1683134243472" duration="2483000" />
+      <workItem from="1683155873025" duration="2472000" />
+      <workItem from="1683210316401" duration="4191000" />
+      <workItem from="1683339391383" duration="4411000" />
+      <workItem from="1683356551528" duration="6778000" />
+      <workItem from="1683400835434" duration="9019000" />
+      <workItem from="1683439512724" duration="1395000" />
+      <workItem from="1683490966339" duration="29163000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1683068370424</created>
@@ -81,14 +179,217 @@
       <option name="project" value="LOCAL" />
       <updated>1683068370424</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Added the attributes of Product">
+      <created>1683082282694</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1683082282694</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Added the attributes of Order. Order now is a Record instead of a normal Class">
+      <created>1683082312335</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1683082312335</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Added the annotations dependency">
+      <created>1683082350669</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1683082350669</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Added the types of Product">
+      <created>1683082386127</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1683082386127</updated>
+    </task>
+    <task id="LOCAL-00006" summary=".">
+      <created>1683082413857</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1683082413857</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Implemented search methods to the Searcher functional interface. The implemented methods allows to search by integer, double, String, Date, range and the abstract search method that allows to define custom search criteria.">
+      <created>1683088348257</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1683088348257</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Added the SearchEngine class. This class will work as an intermediary between Searcher and MercadoLibre">
+      <created>1683133664249</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1683133664249</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Added lists for Product and Order">
+      <created>1683134726979</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1683134726979</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Added the remaining attributes and deleted the implementation of Comparable">
+      <created>1683134784384</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1683134784384</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Deleted the implementation of Comparable">
+      <created>1683134933872</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1683134933872</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Changed the abstract method and optimized duplicated code from the search methods.">
+      <created>1683211128809</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1683211128809</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Added the collectMatches method from the Searcher interface">
+      <created>1683212874635</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1683212874635</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Imported the LocalDate library. Added the SearchEngine attribute. Made all attributes final. Added getters for the lists. Added the add and delete method por Product and Order, added the increase of times bought and product quantity, and the decrease of product quantity.">
+      <created>1683213059039</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1683213059039</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Added the search by range method">
+      <created>1683214029721</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1683214029721</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Added the search methods using SearchEngine">
+      <created>1683214066350</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1683214066350</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Changed the generic parameter of the list, now it can only receive a list of Product instead of anything Searchable">
+      <created>1683214447003</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1683214447003</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Added 3 menus and a verification method">
+      <created>1683363014309</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1683363014309</updated>
+    </task>
+    <task id="LOCAL-00019" summary="Eliminated the SearchEngine implementation and replaced with the static use of Searcher. Added list displayers and the getCategory method that uses a static reference of Product.">
+      <created>1683363163560</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1683363163560</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Added a static method that access the ProductType enum, as Product is the only class that is associated with that enum.">
+      <created>1683363262320</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1683363262320</updated>
+    </task>
+    <task id="LOCAL-00021" summary="Added javadoc documentation">
+      <created>1683414109258</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1683414109258</updated>
+    </task>
+    <task id="LOCAL-00022" summary="Implemented the searchByCondition method and binarySearchByCondition method.">
+      <created>1683515456256</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1683515456256</updated>
+    </task>
+    <task id="LOCAL-00023" summary="Initialized the String attribute">
+      <created>1683515485728</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1683515485728</updated>
+    </task>
+    <task id="LOCAL-00024" summary="Added getters for description and category">
+      <created>1683515516696</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1683515516696</updated>
+    </task>
+    <task id="LOCAL-00025" summary="Added getters for the orders list and product price. Added setters for the product and order lists. Added the displayers for the sorted lists. Added exceptions for the search methods. New search method added.">
+      <created>1683515660305</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1683515660305</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Initial commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="Initial commit" />
+    <MESSAGE value="Added the attributes of Product" />
+    <MESSAGE value="Added the attributes of Order. Order now is a Record instead of a normal Class" />
+    <MESSAGE value="Added the annotations dependency" />
+    <MESSAGE value="Added the types of Product" />
+    <MESSAGE value="." />
+    <MESSAGE value="Implemented search methods to the Searcher functional interface. The implemented methods allows to search by integer, double, String, Date, range and the abstract search method that allows to define custom search criteria." />
+    <MESSAGE value="Added the SearchEngine class. This class will work as an intermediary between Searcher and MercadoLibre" />
+    <MESSAGE value="Added lists for Product and Order" />
+    <MESSAGE value="Added the remaining attributes and deleted the implementation of Comparable" />
+    <MESSAGE value="Deleted the implementation of Comparable" />
+    <MESSAGE value="Changed the abstract method and optimized duplicated code from the search methods." />
+    <MESSAGE value="Added the collectMatches method from the Searcher interface" />
+    <MESSAGE value="Added the SearchEngine attribute. Made all attributes final. Added getters for the lists. Added the add and delete method por Product and Order, added the increase of times bought and product quantity, and the decrease of product quantity." />
+    <MESSAGE value="Imported the LocalDate library. Added the SearchEngine attribute. Made all attributes final. Added getters for the lists. Added the add and delete method por Product and Order, added the increase of times bought and product quantity, and the decrease of product quantity." />
+    <MESSAGE value="Added the search by range method" />
+    <MESSAGE value="Added the search methods using SearchEngine" />
+    <MESSAGE value="Changed the generic parameter of the list, now it can only receive a list of Product instead of anything Searchable" />
+    <MESSAGE value="Added 3 menus and a verification method" />
+    <MESSAGE value="Eliminated the SearchEngine implementation and replaced with the static use of Searcher. Added list displayers and the getCategory method that uses a static reference of Product." />
+    <MESSAGE value="Added a static method that access the ProductType enum, as Product is the only class that is associated with that enum." />
+    <MESSAGE value="Added javadoc documentation" />
+    <MESSAGE value="Implemented the searchByCondition method and binarySearchByCondition method." />
+    <MESSAGE value="Initialized the String attribute" />
+    <MESSAGE value="Added getters for description and category" />
+    <MESSAGE value="Added getters for the orders list and product price. Added setters for the product and order lists. Added the displayers for the sorted lists. Added exceptions for the search methods. New search method added." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added getters for the orders list and product price. Added setters for the product and order lists. Added the displayers for the sorted lists. Added exceptions for the search methods. New search method added." />
   </component>
 </project>
