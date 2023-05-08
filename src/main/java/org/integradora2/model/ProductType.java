@@ -13,6 +13,11 @@ public enum ProductType {
         this.category = category;
     }
 
+    /**
+     * Returns the category of the product type.
+     *
+     * @return the category of the product type.
+     */
     public String getCategory() {
         return this.category;
     }
