@@ -5,6 +5,7 @@ import org.jetbrains.annotations.NotNull;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.BiPredicate;
 import java.util.function.Function;
 import java.util.Comparator;
 
@@ -19,7 +20,7 @@ public interface Searcher<T extends Searchable<T>> {
 
     /**
      * Searches a collection of searchable objects for matches to a query based on a given field, using the provided
-     * field getter function.
+     * field getter function. The query and field must be of the same type and they must implement the {@link Comparable} interface.
      *
      * @param searchable  the collection of searchable objects to search through
      * @param query       the query to search for
@@ -30,7 +31,7 @@ public interface Searcher<T extends Searchable<T>> {
      * @return A list of matches found in the {@link Searchable} Collection
      * @see java.util.Collection
      */
-    <U, V extends Iterable<T>, R extends List<T>> R search(@NotNull V searchable, U query, Function<T, U> fieldGetter);
+    <U extends Comparable<? super U>, V extends Iterable<T>, R extends List<T>> R search(@NotNull V searchable, U query, Function<T, U> fieldGetter);
 
     /**
      * Searches a list of searchable objects for matches to an integer value based on a given field, using the provided
@@ -116,6 +117,12 @@ public interface Searcher<T extends Searchable<T>> {
         return collectMatches(list, indexes);
     }
 
+    static <T extends Searchable<T>, U extends Comparable<? super U>> List<T> searchingByCondition(@NotNull List<T> list, Function<T, U> fieldGetter, BiPredicate<U, U> condition, U target) {
+        list.sort(Comparator.comparing(fieldGetter));
+        List<Integer> indexes = binarySearchByCondition(list, fieldGetter, condition, target);
+        return collectMatches(list, indexes);
+    }
+
     /**
      * Performs a binary search on the given list using the given target value and key extractor function.
      * The list is assumed to be sorted in ascending order based on the value returned by the key extractor function.
@@ -187,6 +194,39 @@ public interface Searcher<T extends Searchable<T>> {
                 result.add(mid);
             }
             if (value < low) {
+                left = mid + 1;
+            } else {
+                right = mid - 1;
+            }
+        }
+
+        return result;
+    }
+
+    static <T, U extends Comparable<? super U>> List<Integer> binarySearchByCondition(List<T> list, Function<T, U> fieldGetter, BiPredicate<U, U> condition, U target){
+        List<Integer> result = new ArrayList<>();
+        int left = 0, right = list.size() - 1;
+
+        while (left <= right) {
+            int mid = left + (right - left) / 2;
+            U value = fieldGetter.apply(list.get(mid));
+
+            if (condition.test(value, target)) {
+                int i = mid - 1;
+                while (i >= 0 && condition.test(fieldGetter.apply(list.get(i)), target)) {
+                    result.add(i);
+                    i--;
+                }
+
+                result.add(mid);
+                i = mid + 1;
+
+                while (i < list.size() && condition.test(fieldGetter.apply(list.get(i)), target)) {
+                    result.add(i);
+                    i++;
+                }
+                break;
+            } else if (value.compareTo(target) < 0) {
                 left = mid + 1;
             } else {
                 right = mid - 1;
