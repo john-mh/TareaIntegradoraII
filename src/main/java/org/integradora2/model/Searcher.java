@@ -192,8 +192,19 @@ public interface Searcher<T extends Searchable<T>> {
 
             if (value >= low && value <= high) {
                 result.add(mid);
-            }
-            if (value < low) {
+                int i = mid - 1;
+                while (i >= left && fieldGetter.apply(list.get(i)) >= low) {
+                    result.add(i);
+                    i--;
+                }
+                i = mid + 1;
+                while (i <= right && fieldGetter.apply(list.get(i)) <= high) {
+                    result.add(i);
+                    i++;
+                }
+                left = i;
+                right = mid - 1;
+            } else if (value < low) {
                 left = mid + 1;
             } else {
                 right = mid - 1;
@@ -203,6 +214,19 @@ public interface Searcher<T extends Searchable<T>> {
         return result;
     }
 
+    /**
+     * This method performs a binary search in a sorted list based on a given condition.
+     *
+     * @param list The list to search through.
+     * @param fieldGetter A function that returns the field to use for the comparison.
+     * @param condition The condition to check for.
+     * @param target The target value to compare the elements of the list to.
+     * @param <T> The type of the elements in the list.
+     * @param <U> The type of the field to compare.
+     * @return A list of indexes in the original list that contain elements that meet the condition.
+     * @see java.util.function.Function
+     * @see java.util.function.BiPredicate
+     */
     static <T, U extends Comparable<? super U>> List<Integer> binarySearchByCondition(List<T> list, Function<T, U> fieldGetter, BiPredicate<U, U> condition, U target){
         List<Integer> result = new ArrayList<>();
         int left = 0, right = list.size() - 1;
