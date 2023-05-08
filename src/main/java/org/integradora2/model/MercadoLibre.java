@@ -33,14 +33,6 @@ public class MercadoLibre {
         return products.get(index).getPrice();
     }
 
-    public void setProducts(List<Product> products) {
-        this.products.addAll(products);
-    }
-
-    public void setOrders(List<Order> orders) {
-        this.orders.addAll(orders);
-    }
-
     public String displayProducts(){
         StringBuilder sb = displayProducts(new StringBuilder(), products);
         return sb.toString();
@@ -55,7 +47,6 @@ public class MercadoLibre {
         }
         return sb;
     }
-
 
     public String displayOrders(){
         StringBuilder sb = displayOrders(new StringBuilder(), orders);
@@ -101,7 +92,6 @@ public class MercadoLibre {
         }
         return displayOrders(new StringBuilder(), list).toString();
     }
-
 
     public void addProduct(String name, String description, double price, int timesBought, int availableQuantity, int type) {
         if(name.isBlank()) {
@@ -185,6 +175,7 @@ public class MercadoLibre {
     }
 
     public List<Product> searchProductByCategory(String query) {
+        if (query.isBlank()) throw new IllegalArgumentException("Empty query not allowed");
         return Searcher.searchingString(products, query, Product::getCategory);
     }
 
