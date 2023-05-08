@@ -54,6 +54,14 @@ public class Product implements Searchable<Product>{
      * Returns the description of the product.
      * @return the description of the product
      */
+    public String getDescription() {
+        return description;
+    }
+
+    /**
+     * Returns the description of the product.
+     * @return the description of the product
+     */
     public String getCategory() {
         return type.getCategory();
     }
@@ -64,6 +72,14 @@ public class Product implements Searchable<Product>{
      */
     public double getPrice() {
         return price;
+    }
+
+    /**
+     * Returns the unique identifier of the product.
+     * @return the unique identifier of the product
+     */
+    public int getID() {
+        return id;
     }
 
     /**
